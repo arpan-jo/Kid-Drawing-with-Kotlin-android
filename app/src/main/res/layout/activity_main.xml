@@ -6,25 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.arpan.kidsdrawing.DrawingView
-        android:id="@+id/drawing_view"
+
+    <FrameLayout
+        android:id="@+id/drawing_view_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="5dp"
         android:background="@drawable/background_drawing_view_layout"
-        app:layout_constraintBottom_toBottomOf="@id/paint_colors"
+        app:layout_constraintBottom_toTopOf="@id/paint_colors"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Image tower"
+            android:scaleType="centerCrop"
+            android:src="@drawable/eifel_tower" />
+
+        <com.arpan.kidsdrawing.DrawingView
+            android:id="@+id/drawing_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80FFFFFF" />
+
+    </FrameLayout>
+
 
     <LinearLayout
         android:id="@+id/paint_colors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/ib_brush"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_section_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/drawing_view">
+        app:layout_constraintTop_toBottomOf="@id/drawing_view_container">
 
         <ImageButton
             android:layout_width="25dp"
@@ -108,17 +128,44 @@
     </LinearLayout>
 
 
-    <ImageButton
-        android:id="@+id/ib_brush"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-        android:contentDescription="image"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_brush"
+    <LinearLayout
+        android:id="@+id/bottom_section_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/paint_colors" />
+        app:layout_constraintTop_toBottomOf="@id/paint_colors">
+
+        <ImageButton
+            android:id="@+id/image_select"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:contentDescription="image select"
+            android:scaleType="fitXY"
+            android:src="@drawable/image_select" />
+
+        <ImageButton
+            android:id="@+id/image_undo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:contentDescription="image undo"
+            android:scaleType="fitXY"
+            android:src="@drawable/undo" />
+
+        <ImageButton
+            android:id="@+id/ib_brush"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:contentDescription="image"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_brush" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
